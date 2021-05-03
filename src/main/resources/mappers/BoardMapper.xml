@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.team.mappers.BoardMapper">
+
+<insert id="create">
+ insert into workflow (userid, title, content, category, startday, endday, docfile, price) 
+ values(#{userid}, #{title}, #{content}, #{category}, #{startday}, #{endday}, #{docfile}, #{price})
+ </insert>
+ 
+ 
+<insert id="noticeCreate">
+ insert into notice (name, title, content) 
+ values(#{name}, #{title}, #{content})
+ </insert>
+ 
+<select id="read" resultType="com.team.domain.BoardVO" >
+ select 
+   applyid, title, userid, content, category, writedate
+ from 
+   workflow 
+ where applyid = #{applyid}
+</select>
+
+<select id="noticeRead" resultType="com.notice.domain.NoticeBoardVO">
+ select 
+   noticeid, name, title, content, writeDate
+ from 
+   notice 
+ where noticeid = #{noticeid}
+</select>
+ 
+
+<update id="update">
+	update workflow set title =#{title}, content =#{content} 
+	where applyid = #{applyid}
+</update>
+
+<update id="noticeUpdate">
+	update notice set title =#{title}, content =#{content} 
+	where noticeid = #{noticeid}
+</update>
+
+ 
+<delete id="delete">
+	delete from workflow where applyid = #{applyid}
+</delete>
+
+<delete id="noticeDelete">
+	delete from notice where noticeid = #{noticeid}
+</delete>
+
+
+<select id="workFlow2" resultType="com.team.domain.BoardVO">
+ select 
+   applyid, userid, title, content, category, writedate
+ from 
+   workflow;
+</select>
+
+
+<select id="noticeBoardListAll" resultType="com.notice.domain.NoticeBoardVO" >
+ select 
+   noticeid, name, title, content, writeDate
+ from 
+   notice;
+</select>
+
+
+<!-- notice 페이징 처리 -->
+<select id="getNoticeBoardList" resultType="com.notice.domain.NoticeBoardVO">
+		SELECT
+			noticeid, name, title, content, writeDate		
+		FROM
+			notice
+		LIMIT #{startList}, #{listSize}
+</select>
+
+<select id="getBoardList" resultType="com.team.domain.BoardVO">
+	 select 
+	   	applyid
+	   	, userid
+	   	, title
+	   	, content
+	   	, category
+	   	, writedate
+	 from 
+	   workflow
+	  <trim prefix="WHERE" prefixOverrides="AND|OR">
+			<if test='searchType=="title" and keyword != null and keyword != "" '>
+				AND title like CONCAT('%', #{keyword}, '%')
+			</if>
+			<if test="searchType=='content' and keyword != null and keyword != '' ">
+				AND content like CONCAT('%', #{keyword}, '%')
+			</if>
+			<if test='searchType=="userid" and keyword != null and keyword != "" '>
+				AND userid like CONCAT('%', #{keyword}, '%')
+			</if>	
+		</trim>
+	 LIMIT #{startList}, #{listSize}
+</select>
+
+<!-- notice 전체 글 가져오기 -->
+<select id="getNoticeBoardListCnt" resultType="int">
+		SELECT
+			count(*) as listCnt
+		FROM
+			notice
+</select>
+
+<!-- workflow 전체 글 가져오기 -->
+<select id="getBoardListCnt" resultType="int">
+		SELECT
+			count(*) as listCnt
+		FROM
+			workflow
+			<trim prefix="WHERE" prefixOverrides="AND|OR">
+				<if test="keyword != null and keyword != '' ">
+							<if test="searchType=='title'">
+								AND title like CONCAT('%', #{keyword}, '%')
+							</if>
+							<if test="searchType=='content'">
+								AND content like CONCAT('%', #{keyword}, '%')
+							</if>
+							<if test="searchType=='userid'">
+								AND userid like CONCAT('%', #{keyword}, '%')
+							</if>
+			      </if>
+			</trim>
+</select>
+
+
+</mapper>

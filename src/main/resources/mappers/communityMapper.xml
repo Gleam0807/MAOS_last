@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mcos.communityMapper">
+	
+	<!-- 게시물 작성 -->
+	<insert id="create">
+		insert into community(userid, title, comContent, `reads`, comid, username)
+		values(#{userid}, #{title}, #{comContent}, #{reads}, #{comid}, #{username})
+	 <selectKey keyProperty="userid" resultType="String" order="AFTER">
+		SELECT LAST_INSERT_ID()
+	</selectKey>
+	</insert>
+
+	<!-- 게시물 읽기 -->
+	<select id="read" resultType="CommunityVO">
+		select
+			comid, title, username, writeDate, comContent
+		from
+			community
+		where
+			comid = #{comid} 
+	</select>
+	
+	<!-- 글 수정 -->
+	<update id="update">
+		update community set title = #{title}, comContent = #{comContent}
+		where comid = #{comid}
+	</update>
+	
+		<!-- 조회수가 증가 -->
+	<update id="updateReads">
+		update community
+		set `reads` = `reads` + 1
+		where comid = #{comid}
+	</update>
+	
+	<!-- 글 삭제 -->
+	<delete id="delete">
+		delete from community where comid = #{comid}
+	</delete>
+	
+	<!-- 게시물 목록 -->
+	<select id="list" resultType="CommunityVO">
+		SELECT
+			comid, username, title, writeDate, `reads`
+		FROM
+			community
+			<!-- <trim>: 하위 <if>에서 조건이 맞는 조건절이 있을 경우 WHERE키워드를 생성 -->
+		<trim prefix="WHERE" prefixOverrides="AND|OR">
+			<if test="searchType == 'title' and keyword != null and keyword !='' ">
+				AND title like CONCAT('%', #{keyword}, '%')
+			</if>
+			<if test="searchType=='comContent' and keyword != null and keyword != '' ">
+				AND	comContent like CONCAT('%', #{keyword}, '%')
+			</if>
+			<if test="searchType=='username' and keyword != null and keyword != ''">
+				AND username like CONCAT('%', #{keyword}, '%')
+			</if>
+		</trim>
+		ORDER BY 
+			comid desc, writeDate desc
+		LIMIT #{startList}, #{listSize}
+
+	</select>
+
+	<select id="listCnt" resultType="int">
+		select
+			count(*) as listCnt
+		from
+			community
+		<trim prefix="WHERE" prefixOverrides="AND|OR">
+			<if test="keyword != null and keyword !='' ">
+				<if test="searchType=='title'">
+					AND TITLE like CONCAT('%', #{keyword}, '%')
+				</if>
+				<if test="searchType=='comContent'">
+					AND	comContent like CONCAT('%', #{keyword}, '%')
+				</if>
+				<if test="searchType=='username'">
+					AND username like CONCAT('%', #{keyword}, '%')
+				</if>
+			</if>
+		</trim>
+	</select>
+	
+</mapper>

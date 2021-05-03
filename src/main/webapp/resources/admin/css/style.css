@@ -1,0 +1,75 @@
+/* 4대보험 css */
+.salary {
+    color: black;
+    font-size: medium;
+    font-weight: bolder;
+    text-align: center;
+    margin-left: -40px;
+}
+
+.calculation {
+    margin-left: 20px;
+    font-weight: bolder;
+    background-color: rgb(6, 203, 252);
+    color: white;
+    border-radius:0.5em;
+    padding:5px 20px;
+}
+
+.reset {
+    font-weight: bolder; 
+    border-radius:0.5em; 
+    padding:5px 20px; 
+    background-color: rgb(6, 203, 252);
+    color: white
+}
+
+.category {
+    background-color:rgb(179, 220, 236); 
+    color: black;
+}
+
+.table {
+    width: 650px; 
+    height: 350px; 
+    text-align: center;
+}
+
+.paybar {
+    width:130px; 
+    height:25px; 
+    text-align: right;
+}
+
+.notice {
+    text-align: center;
+    color: red;
+    font-weight: bolder;
+    padding-bottom: 5px;
+    margin-top: 0;
+}
+
+.navyBtn {
+    background-color:rgb(6, 203, 252);
+    color: white;
+    height: 20px;
+    font-size: x-small;
+    margin-left: 10px;
+}
+
+/* 4대보험 css 끝 */
+
+/* 커뮤니티 css 시작 */
+.icheck {
+    position: absolute;
+    top: 20%; 
+    left: 20%; 
+    display: block; 
+    width: 140%; 
+    height: 140%; 
+    margin: 0px; 
+    padding: 0px; 
+    border: 0px; 
+    opacity: 0; 
+    background: rgb(255, 255, 255);
+}

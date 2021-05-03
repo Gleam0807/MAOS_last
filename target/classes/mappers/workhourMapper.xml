@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace = "com.mcos.mappers.workhourMapper">
+
+
+<select id="read" resultType="com.mcos.workhourlog.WorkhourVO">
+select * from workhourlog
+where startHour = #{startHour}
+
+</select>
+
+ <insert id="create" parameterType="com.mcos.workhourlog.WorkhourVO">
+ insert into workhourlog(startHour, userid)
+ values(#{startHour}, #{userid})
+</insert>
+
+<update id="update" parameterType="com.mcos.workhourlog.WorkhourVO">
+
+update workhourlog set endHour = #{endHour}, type=#{type}
+where userid = #{userid} and date(startHour) = date(#{endHour})
+
+</update>
+
+<select id="calcom" resultType="com.mcos.calendar.CalendarVO" parameterType="string">
+ select title, year(writeDate) as year ,month(writeDate) as month, day(writeDate) as day 
+ from workflow 
+ where str_to_date( writeDate,'%Y-%m') = #{current};
+</select>
+
+
+</mapper>

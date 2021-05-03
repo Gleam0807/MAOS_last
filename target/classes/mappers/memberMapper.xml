@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.project.maos.mappers.memberMapper">
+	<!-- 회원가입 -->
+	<insert id="register">
+	    INSERT INTO MEMBER(USERID,USERPASS,USERNAME,EMAIL,HIREDATE,SALARY) 
+	    VALUES(#{userId},#{userPass},#{userName},#{email},#{hiredate},#{salary})
+    </insert>
+    
+    <!-- 로그인 -->
+	<select id="login" resultType="com.project.maos.vo.MemberVO">
+		SELECT USERID, USERPASS, USERNAME,
+		  FROM MEMBER
+		 WHERE USERID = #{userId}
+		 AND USERPASS = #{userPass}
+	</select>
+	
+<!-- 	<update id="authupdate" parameterType="com.project.maos.vo.MemberVO" >
+		UPDATE MEMBER
+			SER
+				auth = 'ROLE_ADMIN'
+			WHERE userid = #{3333}
+	</update> -->
+	
+	<insert id="executiveregister">
+	    INSERT INTO MEMBER(USERID,USERPASS,USERNAME,EMAIL,HIREDATE,SALARY,AUTH) 
+	    VALUES(#{userId},#{userPass},#{userName},#{email},#{hiredate},#{salary},'ROLE_MEMBER,ROLE_ADMIN')
+    </insert>
+	
+	
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+

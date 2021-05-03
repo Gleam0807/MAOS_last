@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper 
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.mcos.community.mapper.ReplyMapper">
+	
+	<insert id="insert">
+		insert into reply(comid, replyid, content, username, userid)
+			values(#{comid}, #{replyid}, #{content}, #{username}, #{userid})
+	</insert>
+	
+	<select id="read" resultType="com.mcos.community.domain.ReplyVO">
+		select * from reply where replyid = #{replyid}
+	</select>
+	
+	<update id="update">
+		update reply set content = #{content}, writeDate = NOW()
+		where replyid = #{replyid}
+	</update>
+	
+	<delete id="delete">
+		delete from reply where replyid = #{replyid}
+	</delete>
+	
+</mapper>
