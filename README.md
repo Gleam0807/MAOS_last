@@ -17,5 +17,11 @@ spring security는 세션-쿠키방식으로 인증한다.
 
 #설정
 
-````<!-- Security --> <dependency> <groupId>org.springframework.security</groupId> <artifactId>spring-security-core</artifactId> <version>${security.version}</version> </dependency> <dependency> <groupId>org.springframework.security</groupId> <artifactId>spring-security-web</artifactId> <version>${security.version}</version> </dependency> <dependency> <groupId>org.springframework.security</groupId> <artifactId>spring-security-config</artifactId> <version>${security.version}</version> </dependency> <dependency> <groupId>org.springframework.security</groupId> <artifactId>spring-security-taglibs</artifactId> <version>${security.version}</version> </dependency> <dependency> <groupId>org.springframework.security</groupId> <artifactId>spring-security-test</artifactId> <version>${security.version}</version> </dependency>````
+````<!-- Security --> 
+<dependency> 
+  <groupId>org.springframework.security</groupId> 
+  <artifactId>spring-security-core</artifactId> 
+  <version>${security.version}</version> 
+</dependency> 
+<dependency> <groupId>org.springframework.security</groupId> <artifactId>spring-security-web</artifactId> <version>${security.version}</version> </dependency> <dependency> <groupId>org.springframework.security</groupId> <artifactId>spring-security-config</artifactId> <version>${security.version}</version> </dependency> <dependency> <groupId>org.springframework.security</groupId> <artifactId>spring-security-taglibs</artifactId> <version>${security.version}</version> </dependency> <dependency> <groupId>org.springframework.security</groupId> <artifactId>spring-security-test</artifactId> <version>${security.version}</version> </dependency>````
 
