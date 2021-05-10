@@ -15,8 +15,8 @@ spring security는 세션-쿠키방식으로 인증한다.
 5. 유저에게 session ID와 함께 응답을 내려줌<br/>
 6. 이후 요청에서는 요청쿠키에서 JSESSIONID를 까봐서 검증 후 유효하면 Authentication를 쥐어준다.<br/>
 
-#설정
-  의존성 추가
+# 설정
+의존성 추가
 ````
 <!-- Security --> 
 <dependency> 
