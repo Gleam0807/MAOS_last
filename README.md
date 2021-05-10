@@ -15,4 +15,7 @@ spring security는 세션-쿠키방식으로 인증한다.
 5. 유저에게 session ID와 함께 응답을 내려줌<br/>
 6. 이후 요청에서는 요청쿠키에서 JSESSIONID를 까봐서 검증 후 유효하면 Authentication를 쥐어준다.<br/>
 
+#설정
+
+```<!-- Security --> <dependency> <groupId>org.springframework.security</groupId> <artifactId>spring-security-core</artifactId> <version>${security.version}</version> </dependency> <dependency> <groupId>org.springframework.security</groupId> <artifactId>spring-security-web</artifactId> <version>${security.version}</version> </dependency> <dependency> <groupId>org.springframework.security</groupId> <artifactId>spring-security-config</artifactId> <version>${security.version}</version> </dependency> <dependency> <groupId>org.springframework.security</groupId> <artifactId>spring-security-taglibs</artifactId> <version>${security.version}</version> </dependency> <dependency> <groupId>org.springframework.security</groupId> <artifactId>spring-security-test</artifactId> <version>${security.version}</version> </dependency>```
 
