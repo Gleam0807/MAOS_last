@@ -8,11 +8,11 @@ kosta 프로젝트 결과물
 ![image](https://user-images.githubusercontent.com/73210774/117611199-09a9bc80-b19e-11eb-9db5-2931b9ccf679.png)
 spring security는 세션-쿠키방식으로 인증한다.
 
-유저가 로그인을 시도 (http request)
-AuthenticationFilter 에서부터 위와같이 user DB까지 타고 들어감
-DB에 있는 유저라면 UserDetails 로 꺼내서 유저의 session 생성
-spring security의 인메모리 세션저장소인 SecurityContextHolder 에 저장
-유저에게 session ID와 함께 응답을 내려줌
-이후 요청에서는 요청쿠키에서 JSESSIONID를 까봐서 검증 후 유효하면 Authentication를 쥐어준다.
+1. 유저가 로그인을 시도 (http request)<br/>
+2. AuthenticationFilter 에서부터 위와같이 user DB까지 타고 들어감<br/>
+3. DB에 있는 유저라면 UserDetails 로 꺼내서 유저의 session 생성<br/>
+4. spring security의 인메모리 세션저장소인 SecurityContextHolder 에 저장<br/>
+5. 유저에게 session ID와 함께 응답을 내려줌<br/>
+6. 이후 요청에서는 요청쿠키에서 JSESSIONID를 까봐서 검증 후 유효하면 Authentication를 쥐어준다.<br/>
 
 
