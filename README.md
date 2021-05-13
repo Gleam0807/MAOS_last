@@ -1,6 +1,17 @@
 # MAOS 최종
  * 사원관리를 보다 간편하고 편리하게 도와주는 서비스
 
+# 사용 기술목록
+ * Spring FrameWork ![image](https://user-images.githubusercontent.com/73210774/118097365-8c847e80-b40d-11eb-8e48-35ede77af93c.png)
+ * MyBatis ![image](https://user-images.githubusercontent.com/73210774/118097392-973f1380-b40d-11eb-8ae9-5f5c93b6a862.png)
+ * MySQL ![image](https://user-images.githubusercontent.com/73210774/118097418-a0c87b80-b40d-11eb-8856-3fef6c14a5e4.png)
+ * JSP,Servlet
+ * HTML5,CSS3,JS,Ajax
+ * TomCat ![image](https://user-images.githubusercontent.com/73210774/118097475-b63da580-b40d-11eb-8991-3d3e23dfdf1f.png)
+ * I'M Port(결제 API) ![image](https://user-images.githubusercontent.com/73210774/118097541-c9e90c00-b40d-11eb-8718-33bf7039b69e.png)
+
+
+
 
 
 # 스프링 시큐리티        
