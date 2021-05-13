@@ -1,5 +1,7 @@
-# MAOS_최종
-kosta 프로젝트 결과물
+# MAOS 최종
+ * 사원관리를 보다 간편하고 편리하게 도와주는 서비스![image](https://user-images.githubusercontent.com/73210774/118097271-6d85ec80-b40d-11eb-8e8b-ff8df3984ab5.png)
+
+
 
 # 스프링 시큐리티        
 
